@@ -7,14 +7,12 @@ import game.presentation.ITicTacToe;
 public class Main {
     public static void main(String[] args) {
 
-        DatabaseManager.testConnection();
+        int[][] grid = GridFactory.newEmptyGrid();
 
-//        int[][] grid = GridFactory.newEmptyGrid();
-//
-//        GridManager gridManager = new GridManager(grid);
-//        ITicTacToe ticTacToe = TicTacToeProvider.provideTicTacToe(gridManager);
-//
-//        ticTacToe.playGame();
+        GridManager gridManager = new GridManager(grid);
+        ITicTacToe ticTacToe = TicTacToeProvider.provideTicTacToe(gridManager);
+
+        ticTacToe.playGame();
 
     }
 
