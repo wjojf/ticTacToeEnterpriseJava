@@ -5,9 +5,7 @@ public class GridManager {
 
     private final int[][] grid;
     private int turn = 1;
-
     private final int xValue = 1;
-
     private final int oValue = 2;
 
     public boolean isXTurn() {
@@ -51,7 +49,7 @@ public class GridManager {
         );
     }
 
-    public boolean hasFreeSlots() {
+    public boolean isGridHasFreeSlots() {
         for (int[] row : this.grid) {
             for (int value : row) {
                 if (value == this.getEmptyValue()) {
@@ -68,6 +66,46 @@ public class GridManager {
             this.isOWin() ||
             this.isDraw()
         );
+    }
+
+
+    public boolean isXWin() {
+        return this.isWin(this.xValue);
+    }
+
+    public boolean isOWin() {
+        return this.isWin(this.oValue);
+    }
+
+    public boolean isDraw() {
+        return (
+            !this.isGridHasFreeSlots() &&
+            !this.isXWin() &&
+            !this.isOWin()
+        );
+    }
+
+    public void makeMove(int row, int col) {
+        if (!isSlotFree(row, col) || !isSlotValid(row, col)){
+            throw new InvalidKeyException("slot is already taken");
+        }
+
+        if (this.turn == this.xValue){
+            this.setX(row, col);
+            this.turn = this.oValue;
+        } else {
+            this.setO(row, col);
+            this.turn = this.xValue;
+        }
+
+    }
+
+    private void setX(int x, int y) {
+        this.grid[x][y] = this.xValue;
+    }
+
+    private void setO(int x, int y) {
+        this.grid[x][y] = this.oValue;
     }
 
     private boolean isWin(int playerVal) {
@@ -127,45 +165,4 @@ public class GridManager {
 
         return isDiagonalRightTopWin;
     }
-
-    public boolean isXWin() {
-        return this.isWin(this.xValue);
-    }
-
-    public boolean isOWin() {
-        return this.isWin(this.oValue);
-    }
-
-    public boolean isDraw() {
-        return (
-            !this.hasFreeSlots() &&
-            !this.isXWin() &&
-            !this.isOWin()
-        );
-    }
-
-    public void makeMove(int row, int col) {
-        if (!isSlotFree(row, col) || !isSlotValid(row, col)){
-            throw new InvalidKeyException("slot is already taken");
-        }
-
-        if (this.turn == this.xValue){
-            this.setX(row, col);
-            this.turn = this.oValue;
-        } else {
-            this.setO(row, col);
-            this.turn = this.xValue;
-        }
-
-    }
-
-    private void setX(int x, int y) {
-        this.grid[x][y] = this.xValue;
-    }
-
-    private void setO(int x, int y) {
-        this.grid[x][y] = this.oValue;
-    }
-
-
 }
