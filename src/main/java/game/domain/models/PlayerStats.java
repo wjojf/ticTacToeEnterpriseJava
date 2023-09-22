@@ -1,9 +1,5 @@
 package game.domain.models;
 
-import java.text.DecimalFormat;
-
-import static java.lang.Math.round;
-
 public class PlayerStats {
     private Integer gamesWon = 0;
     private Integer gamesLost = 0;
