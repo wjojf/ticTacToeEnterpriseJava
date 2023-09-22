@@ -1,9 +1,9 @@
 package game.presentation.terminal;
 
 import game.domain.GridManager;
-import game.domain.PlayerMove;
+import game.domain.models.PlayerMove;
 import game.presentation.ITicTacToe;
-import game.presentation.models.PlayerMoveInput;
+import game.presentation.terminal.models.PlayerMoveInput;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;

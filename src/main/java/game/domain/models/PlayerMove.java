@@ -1,4 +1,4 @@
-package game.domain;
+package game.domain.models;
 
 public class PlayerMove {
     public int row;

@@ -1,6 +1,5 @@
-package game.presentation.models;
+package game.presentation.terminal.models;
 
-import game.domain.PlayerMove;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
