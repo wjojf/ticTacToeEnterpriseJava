@@ -42,12 +42,38 @@ public class PlayerStatsRepositoryPostgres implements IPlayerStatsRepository {
     }
 
     @Override
-    public void updatePlayerStatsByUserId(Integer userId, PlayerStats playerStats) throws Exception {
+    public void updatePlayerStatsByUserId(Integer userId, PlayerStats playerStats) throws SQLException {
+        Connection conn = this.databaseManager.getConnection();
 
+        PreparedStatement statement = conn.prepareStatement(
+                "UPDATE users_games_stats SET games_won=?, games_draw=?, games_lost=? WHERE user_id = ?"
+        );
+
+        statement.setInt(1, playerStats.getGamesWon());
+        statement.setInt(2, playerStats.getGamesDraw());
+        statement.setInt(3, playerStats.getGamesDraw());
+        statement.setInt(4, userId);
+
+        statement.executeUpdate();
+
+        conn.commit();
     }
 
     @Override
-    public void createPlayerStatusByUserId(Integer userId, PlayerStats playerStats) throws Exception {
+    public void createPlayerStatusByUserId(Integer userId, PlayerStats playerStats) throws SQLException {
+        Connection conn = this.databaseManager.getConnection();
 
+        PreparedStatement statement = conn.prepareStatement(
+                "INSERT INTO users_games_stats (games_won. games_draw, games_lost, user_id) VALUES (?, ?, ?, ?);"
+        );
+
+        statement.setInt(1, playerStats.getGamesWon());
+        statement.setInt(2, playerStats.getGamesDraw());
+        statement.setInt(3, playerStats.getGamesDraw());
+        statement.setInt(4, userId);
+
+        statement.executeUpdate();
+
+        conn.commit();
     }
 }

@@ -2,8 +2,23 @@ package game.domain.models;
 
 public class PlayerStats {
     private Integer gamesWon = 0;
+
+    public Integer getGamesWon() {
+        return gamesWon;
+    }
+
     private Integer gamesLost = 0;
+
+    public Integer getGamesLost() {
+        return gamesLost;
+    }
+
     private Integer gamesDraw = 0;
+
+    public Integer getGamesDraw() {
+        return gamesDraw;
+    }
+
 
     public PlayerStats(Integer gamesWon, Integer gamesLost, Integer gamesDraw) {
         this.gamesWon = gamesWon;
