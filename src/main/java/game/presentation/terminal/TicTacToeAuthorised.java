@@ -40,6 +40,12 @@ public class TicTacToeAuthorised extends TicTacToeAnonymus {
         String loginRegisterInput = this.takeLoginRegisterInput();
 
         // TODO: finish me
+        if (Objects.equals(loginRegisterInput, this.loginInputValueLower)) {
+            this.loginPlayer();
+            return;
+        }
+
+        this.registerPlayer();
 
     }
 
@@ -52,10 +58,18 @@ public class TicTacToeAuthorised extends TicTacToeAnonymus {
 
         while (!isLoginRegisterInputValid(loginRegister)){
             System.out.print(this.getLoginInputMessage());
-            loginRegister = keyboard.nextLine();
+            loginRegister = keyboard.nextLine().toLowerCase();
         }
 
         return loginRegister;
+
+    }
+
+    private void loginPlayer() {
+
+    }
+
+    private void registerPlayer() {
 
     }
 
