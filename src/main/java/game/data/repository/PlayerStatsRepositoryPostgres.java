@@ -14,8 +14,8 @@ public class PlayerStatsRepositoryPostgres implements IPlayerStatsRepository {
 
     private final DatabaseManager databaseManager;
 
-    public PlayerStatsRepositoryPostgres(DatabaseManager databaseManager) {
-        this.databaseManager = databaseManager;
+    public PlayerStatsRepositoryPostgres() throws SQLException {
+        this.databaseManager = new DatabaseManager();
     }
 
     @Override
