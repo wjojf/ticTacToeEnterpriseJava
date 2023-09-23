@@ -2,7 +2,7 @@ package game.di;
 
 import game.domain.GridManager;
 import game.presentation.ITicTacToe;
-import game.presentation.terminal.TicTacToeFactory;
+import game.presentation.TicTacToeFactory;
 
 public class TicTacToeProvider {
 
