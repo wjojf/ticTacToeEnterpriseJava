@@ -57,7 +57,8 @@ public class AuthorizationService
     }
 
     private void registerPlayer(PlayerLoginInput registerCredentials) throws Exception {
-
+        this.playersRepository.createNewUser(registerCredentials);
+        this.player = this.playersRepository.getPlayerByUsername(registerCredentials.username);
     }
 
     private String takeLoginRegisterInput() {
