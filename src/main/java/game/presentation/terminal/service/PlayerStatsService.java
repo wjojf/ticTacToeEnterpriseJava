@@ -18,12 +18,11 @@ public class PlayerStatsService
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
-            return;
         }
     }
 
     public void printCurrentPlayerStats(Player player) {
-        PlayerStats currentPlayerStats = null;
+        PlayerStats currentPlayerStats;
 
         try {
             currentPlayerStats = this.repository.getPlayerStatsByUserID(player.id);
@@ -33,8 +32,8 @@ public class PlayerStatsService
             return;
         }
 
-        System.out.printf(getIntroMessage(currentPlayerStats, player));
-        printStatisticsTable(currentPlayerStats, player);
+        System.out.printf(getIntroMessage(player));
+        printStatisticsTable(currentPlayerStats);
     }
 
     public void savePlayerWin(Player player) {
@@ -136,11 +135,11 @@ public class PlayerStatsService
         }
     }
 
-    private static String getIntroMessage(PlayerStats playerStats, Player player) {
+    private static String getIntroMessage(Player player) {
         return "Current Statistics for Player %s%n: ".formatted(player.username);
     }
 
-    private static void printStatisticsTable(PlayerStats playerStats, Player player) {
+    private static void printStatisticsTable(PlayerStats playerStats) {
         String wonGamesRow =    "| Games Won     | %s".formatted(playerStats.getGamesWon());
         String lostGamesRow =   "| Games Lost    | %s".formatted(playerStats.getGamesLost());
         String drawGamesRow =   "| Games Draw    | %s".formatted(playerStats.getGamesDraw());

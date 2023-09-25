@@ -15,11 +15,8 @@ public class TicTacToeAuthorised extends TicTacToeAnonymus {
 
     public TicTacToeAuthorised(GridManager gridManager) {
         super(gridManager);
-
         this.authorizationService = new AuthorizationService();
-
         this.playerStatsService = new PlayerStatsService();
-
     }
 
     @Override
