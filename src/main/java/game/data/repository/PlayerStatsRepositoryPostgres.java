@@ -60,7 +60,7 @@ public class PlayerStatsRepositoryPostgres implements IPlayerStatsRepository {
     }
 
     @Override
-    public void createPlayerStatusByUserId(Integer userId, PlayerStats playerStats) throws SQLException {
+    public void createPlayerStatsByUserId(Integer userId, PlayerStats playerStats) throws SQLException {
         Connection conn = this.databaseManager.getConnection();
 
         PreparedStatement statement = conn.prepareStatement(

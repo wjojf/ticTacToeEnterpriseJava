@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 public class TicTacToeAnonymus implements ITicTacToe {
-    private final GridManager gridManager;
+    protected final GridManager gridManager;
     private final char xSymbol = 'X';
     private final char oSymbol = 'O';
     private final char emptySymbol = ' ';
@@ -205,7 +205,7 @@ public class TicTacToeAnonymus implements ITicTacToe {
         return "Welcome to TicTacToe!";
     }
 
-    private void handleGameOver() {
+    protected void handleGameOver() {
         boolean isDraw = this.gridManager.isDraw();
 
         if (isDraw) {

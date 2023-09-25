@@ -7,13 +7,24 @@ public class PlayerStats {
         return gamesWon;
     }
 
+    public void updateGamesWon() {
+        this.gamesWon++;
+    }
+
     private Integer gamesLost = 0;
 
+    public void updateGamesLost() {
+        this.gamesLost++;
+    }
     public Integer getGamesLost() {
         return gamesLost;
     }
 
     private Integer gamesDraw = 0;
+
+    public void updateGamesDraw() {
+        this.gamesDraw++;
+    }
 
     public Integer getGamesDraw() {
         return gamesDraw;
@@ -48,5 +59,15 @@ public class PlayerStats {
         }
 
         return this.gamesLost.doubleValue() / totalGames.doubleValue();
+    }
+
+    public Double getDrawPercentage() {
+        Integer totalGames = this.getTotalGames();
+
+        if (totalGames == 0) {
+            return 0.0;
+        }
+
+        return this.gamesDraw.doubleValue() / totalGames.doubleValue();
     }
 }
