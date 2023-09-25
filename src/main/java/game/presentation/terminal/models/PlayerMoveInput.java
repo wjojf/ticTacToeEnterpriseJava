@@ -14,7 +14,6 @@ public class PlayerMoveInput {
         this.col = col;
     }
 
-    @Contract("_ -> new")
     public static @NotNull PlayerMoveInput FromStringInput(String playerInput) {
         String[] playerInputSplit = playerInput.split(Pattern.quote("."));
 

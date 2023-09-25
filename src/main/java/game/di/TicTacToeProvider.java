@@ -10,5 +10,4 @@ public class TicTacToeProvider {
         return TicTacToeFactory.newAnonymousTicTacToe(gridManager);
     }
 
-
 }
