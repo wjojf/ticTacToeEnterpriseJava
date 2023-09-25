@@ -1,40 +1,20 @@
 package game.presentation.terminal;
 
-import game.di.RepositoryProvider;
 import game.domain.GridManager;
 import game.domain.models.Player;
-import game.domain.models.PlayerStats;
-import game.domain.repository.IPlayerStatsRepository;
-import game.domain.repository.IPlayersRepository;
 import game.presentation.terminal.service.AuthorizationService;
 import game.presentation.terminal.service.PlayerStatsService;
 
 
 public class TicTacToeAuthorised extends TicTacToeAnonymus {
 
-    private IPlayersRepository playersRepository;
-    private IPlayerStatsRepository playerStatsRepository;
     private Player player;
-    private AuthorizationService authorizationService;
+    private final AuthorizationService authorizationService;
 
-    private PlayerStatsService playerStatsService;
+    private final PlayerStatsService playerStatsService;
 
     public TicTacToeAuthorised(GridManager gridManager) {
         super(gridManager);
-
-        try {
-            this.playersRepository = RepositoryProvider.providePlayersRepository();
-        }
-        catch (Exception e) {
-            return;
-        }
-
-        try {
-            this.playerStatsRepository = RepositoryProvider.providePlayersStatsRepository();
-        }
-        catch (Exception e) {
-            return;
-        }
 
         this.authorizationService = new AuthorizationService();
 
@@ -45,6 +25,7 @@ public class TicTacToeAuthorised extends TicTacToeAnonymus {
     @Override
     public void playGame() {
         this.authorizationService.authorizePlayer();
+        this.player = this.authorizationService.getPlayer();
 
         this.playerStatsService.printCurrentPlayerStats(player);
 
