@@ -48,7 +48,7 @@ public class PlayerStats {
             return 0.0;
         }
 
-        return this.gamesWon.doubleValue() / totalGames.doubleValue();
+        return this.gamesWon.doubleValue() / totalGames.doubleValue() * 100;
     }
 
     public Double getLossPercentage() {
@@ -58,7 +58,7 @@ public class PlayerStats {
             return 0.0;
         }
 
-        return this.gamesLost.doubleValue() / totalGames.doubleValue();
+        return this.gamesLost.doubleValue() / totalGames.doubleValue() * 100;
     }
 
     public Double getDrawPercentage() {
@@ -68,6 +68,6 @@ public class PlayerStats {
             return 0.0;
         }
 
-        return this.gamesDraw.doubleValue() / totalGames.doubleValue();
+        return this.gamesDraw.doubleValue() / totalGames.doubleValue() * 100;
     }
 }

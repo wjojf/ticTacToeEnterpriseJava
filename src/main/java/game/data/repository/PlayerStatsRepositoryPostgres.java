@@ -29,15 +29,15 @@ public class PlayerStatsRepositoryPostgres implements IPlayerStatsRepository {
 
         ResultSet rs = statement.executeQuery();
 
-        if (!rs.next()) {
-            throw new InvalidKeyException("user stats not found");
+        while (rs.next()) {
+            Integer gamesWon = rs.getInt("games_won");
+            Integer gamesLost = rs.getInt("games_lost");
+            Integer gamesDraw = rs.getInt("games_draw");
+
+            return new PlayerStats(gamesWon, gamesLost, gamesDraw);
         }
 
-        Integer gamesWon = rs.getInt("games_won");
-        Integer gamesLost = rs.getInt("games_lost");
-        Integer gamesDraw = rs.getInt("games_draw");
-
-        return new PlayerStats(gamesWon, gamesLost, gamesDraw);
+        throw new InvalidKeyException("user stats not found");
 
     }
 

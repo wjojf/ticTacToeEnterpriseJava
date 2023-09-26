@@ -144,9 +144,9 @@ public class PlayerStatsService
         String wonGamesRow =    "| Games Won     | %s".formatted(playerStats.getGamesWon());
         String lostGamesRow =   "| Games Lost    | %s".formatted(playerStats.getGamesLost());
         String drawGamesRow =   "| Games Draw    | %s".formatted(playerStats.getGamesDraw());
-        String winPercentRow =  "| Games Won, %  | %s".formatted(playerStats.getWinPercentage());
-        String lostPercentRow = "| Games Lost, % | %s".formatted(playerStats.getLossPercentage());
-        String drawPercentRow = "| Games Draw, % | %s".formatted(playerStats.getDrawPercentage());
+        String winPercentRow =  "| Games Won, %%  | %s".formatted(playerStats.getWinPercentage());
+        String lostPercentRow = "| Games Lost, %% | %s".formatted(playerStats.getLossPercentage());
+        String drawPercentRow = "| Games Draw, %% | %s".formatted(playerStats.getDrawPercentage());
 
         Integer[] rowLengths = {
                 wonGamesRow.length(),
@@ -178,6 +178,10 @@ public class PlayerStatsService
         for (String rowToDisplay : rowsToDisplay) {
             System.out.println(delimStringRow);
             System.out.println(rowToDisplay);
+        }
+
+        for (int i = 0; i < 2; i++) {
+            System.out.println();
         }
     }
 }
