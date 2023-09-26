@@ -11,11 +11,14 @@ public class DatabaseManager {
     private static final String  password = "postgres";
 
     public DatabaseManager() throws SQLException {
+        System.out.println("Initializing Database Connection...");
         initTables();
     }
 
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(dsn, username, password);
+        Connection conn = DriverManager.getConnection(dsn, username, password);
+        conn.setAutoCommit(false);
+        return conn;
     }
 
     private void initTables() throws SQLException {
@@ -27,7 +30,7 @@ public class DatabaseManager {
                 "CREATE TABLE IF NOT EXISTS users(" +
                         "id SERIAL primary key not null," +
                         "username varchar(255) unique not null," +
-                        "password varchar(255) not null," +
+                        "password varchar(255) not null" +
                         ")"
         );
 

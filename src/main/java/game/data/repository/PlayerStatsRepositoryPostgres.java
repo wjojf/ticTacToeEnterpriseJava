@@ -29,7 +29,7 @@ public class PlayerStatsRepositoryPostgres implements IPlayerStatsRepository {
 
         ResultSet rs = statement.executeQuery();
 
-        if (!rs.first()) {
+        if (!rs.next()) {
             throw new InvalidKeyException("user stats not found");
         }
 
@@ -64,7 +64,7 @@ public class PlayerStatsRepositoryPostgres implements IPlayerStatsRepository {
         Connection conn = this.databaseManager.getConnection();
 
         PreparedStatement statement = conn.prepareStatement(
-                "INSERT INTO users_games_stats (games_won. games_draw, games_lost, user_id) VALUES (?, ?, ?, ?);"
+                "INSERT INTO users_games_stats (games_won, games_draw, games_lost, user_id) VALUES (?, ?, ?, ?);"
         );
 
         statement.setInt(1, playerStats.getGamesWon());

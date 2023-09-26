@@ -26,7 +26,7 @@ public class AuthorizationService
             this.playersRepository = RepositoryProvider.providePlayersRepository();
         }
         catch (Exception e) {
-            return;
+            System.out.println(e.getMessage());
         }
     }
 
@@ -118,9 +118,14 @@ public class AuthorizationService
     }
 
     private boolean isLoginRegisterInputValid(String loginRegisterInput) {
+
+        if (loginRegisterInput == null) {
+            return false;
+        }
+
         return (
-            loginRegisterInput.toLowerCase() == this.loginInputValueLower ||
-            loginRegisterInput.toLowerCase() == this.registerInputValueLower
+                loginRegisterInput.toLowerCase().equals(this.loginInputValueLower) ||
+                        loginRegisterInput.toLowerCase().equals(this.registerInputValueLower)
         );
     }
 

@@ -127,6 +127,7 @@ public class PlayerStatsService
     }
 
     private void createNewPlayerStats(Player player) {
+        System.out.println("Creating Empty Player stats");
         try {
             this.repository.createPlayerStatsByUserId(player.id, getDefaultPlayerStats());
         }

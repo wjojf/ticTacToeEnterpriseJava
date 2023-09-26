@@ -24,6 +24,8 @@ public class TicTacToeAuthorised extends TicTacToeAnonymus {
         this.authorizationService.authorizePlayer();
         this.player = this.authorizationService.getPlayer();
 
+        System.out.println("Successfully Authorized Player");
+
         this.playerStatsService.printCurrentPlayerStats(player);
 
         super.playGame();

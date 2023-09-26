@@ -25,13 +25,13 @@ public class PlayersRepositoryPostgres implements IPlayersRepository {
     public boolean isUserExists(PlayerLoginInput loginInput) throws SQLException {
         Connection conn = this.databaseManager.getConnection();
 
-        PreparedStatement st = conn.prepareStatement("SELECT user_id FROM users WHERE username=?");
+        PreparedStatement st = conn.prepareStatement("SELECT id FROM users WHERE username=?");
 
         st.setString(1   , loginInput.username);
 
         ResultSet stResult = st.executeQuery();
 
-        return stResult.first();
+        return stResult.next();
     }
 
     public boolean isPasswordMatched(PlayerLoginInput loginInput) throws SQLException {
@@ -42,7 +42,7 @@ public class PlayersRepositoryPostgres implements IPlayersRepository {
         st.setString(2, loginInput.password);
 
         ResultSet stResult = st.executeQuery();
-        return stResult.first();
+        return stResult.next();
     }
 
     public void createNewUser(PlayerLoginInput loginInput) throws SQLException {
@@ -69,7 +69,7 @@ public class PlayersRepositoryPostgres implements IPlayersRepository {
 
         ResultSet rs = st.executeQuery();
 
-        if (!rs.first()) {
+        if (!rs.next()) {
             throw new InvalidKeyException("user not found.");
         }
 
