@@ -9,6 +9,7 @@ import game.presentation.terminal.service.PlayerStatsService;
 public class TicTacToeAuthorised extends TicTacToeAnonymus {
 
     private Player player;
+
     private final AuthorizationService authorizationService;
 
     private final PlayerStatsService playerStatsService;

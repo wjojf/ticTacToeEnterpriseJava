@@ -19,7 +19,14 @@ public class AIPlayer {
     public void makeMove() {
         List<GridSlot> freeSlots = this.gridManager.getAllEmptySlots();
 
-        //TODO: finish me
+        switch (difficulty) {
+            case EASY, MEDIUM -> {
+                makeRandomMove(freeSlots);
+            }
+            default -> {
+                makeBestMove(freeSlots);
+            }
+        }
 
     }
 
@@ -39,7 +46,8 @@ public class AIPlayer {
     }
 
     private void makeBestMove(List<GridSlot> freeSlots) {
-        int[][] gridCopy = getCurrentGridCopy();
+        //FIXME: implement AI algorithm
+        makeRandomMove(freeSlots);
     }
 
     private boolean isRandomSlotValid(GridSlot gridSlot) {
