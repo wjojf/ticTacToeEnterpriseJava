@@ -5,7 +5,7 @@ import game.presentation.terminal.ai.AIDifficulty;
 import game.presentation.terminal.ai.AIPlayer;
 
 
-public class TTTAuthorizedAI extends TicTacToeAuthorised {
+public class TTTAuthorizedAI extends TTTAuthorised {
 
     private final AIPlayer aiPlayer;
 

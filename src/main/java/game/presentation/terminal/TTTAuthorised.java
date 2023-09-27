@@ -6,7 +6,7 @@ import game.presentation.terminal.service.AuthorizationService;
 import game.presentation.terminal.service.PlayerStatsService;
 
 
-public class TicTacToeAuthorised extends TicTacToeAnonymus {
+public class TTTAuthorised extends TTTAnonymus {
 
     private Player player;
 
@@ -14,7 +14,7 @@ public class TicTacToeAuthorised extends TicTacToeAnonymus {
 
     private final PlayerStatsService playerStatsService;
 
-    public TicTacToeAuthorised(GridManager gridManager) {
+    public TTTAuthorised(GridManager gridManager) {
         super(gridManager);
         this.authorizationService = new AuthorizationService();
         this.playerStatsService = new PlayerStatsService();

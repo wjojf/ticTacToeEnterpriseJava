@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class TicTacToeAnonymus implements ITicTacToe {
+public class TTTAnonymus implements ITicTacToe {
     protected final GridManager gridManager;
     private final char xSymbol = 'X';
     private final char oSymbol = 'O';
@@ -16,7 +16,7 @@ public class TicTacToeAnonymus implements ITicTacToe {
     private final char[][] displayGrid;
     private final char[] rowIndexes = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
 
-    public TicTacToeAnonymus(GridManager gridManager) {
+    public TTTAnonymus(GridManager gridManager) {
         this.gridManager = gridManager;
         this.displayGrid = new char[this.gridManager.getGridSize()][this.gridManager.getGridSize()];
     }
