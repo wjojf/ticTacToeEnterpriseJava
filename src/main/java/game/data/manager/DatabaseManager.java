@@ -21,6 +21,7 @@ public class DatabaseManager {
     }
 
     public Connection getConnection() throws SQLException {
+        assert dsn != null;
         Connection conn = DriverManager.getConnection(dsn, username, password);
         conn.setAutoCommit(false);
         return conn;
