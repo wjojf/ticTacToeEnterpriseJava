@@ -1,4 +1,4 @@
-import game.etc.Helpers;
+import kdg.etc.Helpers;
 
 public class TestHashPassword {
 

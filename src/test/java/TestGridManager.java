@@ -1,11 +1,11 @@
-import game.domain.GridFactory;
-import game.domain.GridManager;
+import kdg.tictactoe.domain.GridFactory;
+import kdg.tictactoe.domain.manager.GridStatefulManager;
 
 public class TestGridManager {
 
     public static void TestGridManagerIsWin() {
         int[][] grid = GridFactory.newBottomDiagonalWinGrid();
-        GridManager gridManger = new GridManager(grid);
+        GridStatefulManager gridManger = new GridStatefulManager(grid);
 
         boolean isXWin = gridManger.isXWin();
         if (!isXWin) {
@@ -18,7 +18,7 @@ public class TestGridManager {
 
     public static void TestGridManagerIsDraw() {
         int[][] grid = GridFactory.newDrawGrid();
-        GridManager gridManger = new GridManager(grid);
+        GridStatefulManager gridManger = new GridStatefulManager(grid);
 
         boolean isDraw = gridManger.isDraw();
         if (!isDraw) {

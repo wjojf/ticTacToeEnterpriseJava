@@ -1,15 +1,15 @@
-import game.di.TicTacToeProvider;
-import game.domain.GridFactory;
-import game.domain.GridManager;
-import game.presentation.ITicTacToe;
+import kdg.tictactoe.di.TicTacToeProvider;
+import kdg.tictactoe.domain.GridFactory;
+import kdg.tictactoe.domain.manager.GridStatefulManager;
+import kdg.tictactoe.presentation.ITicTacToe;
 
 public class Main {
     public static void main(String[] args) {
 
         int[][] grid = GridFactory.newEmptyGrid();
 
-        GridManager gridManager = new GridManager(grid);
-        ITicTacToe ticTacToe = TicTacToeProvider.provideTicTacToe(gridManager);
+        GridStatefulManager gridStatefulManager = new GridStatefulManager(grid);
+        ITicTacToe ticTacToe = TicTacToeProvider.provideTicTacToe(gridStatefulManager);
 
         ticTacToe.playGame();
 
