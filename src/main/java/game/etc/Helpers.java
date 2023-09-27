@@ -1,9 +1,30 @@
 package game.etc;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class Helpers {
 
+    public static String byteArray2Hex(byte[] bytes) {
+        char[] hex = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+        StringBuffer sb = new StringBuffer(bytes.length * 2);
+        for(final byte b : bytes) {
+            sb.append(hex[(b & 0xF0) >> 4]);
+            sb.append(hex[b & 0x0F]);
+        }
+        return sb.toString();
+    }
+
     public static String hashPassword(String password) {
-        return password;
+
+        MessageDigest messageDigest;
+        try {
+            messageDigest = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            return password;
+        }
+        messageDigest.update(password.getBytes());
+        return byteArray2Hex(messageDigest.digest());
     }
 
     private static <E> void swap(E[] a, int i, int j) {

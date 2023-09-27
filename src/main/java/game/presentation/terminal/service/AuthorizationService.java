@@ -31,7 +31,7 @@ public class AuthorizationService
     }
 
     public void authorizePlayer() {
-        while (this.player == null)
+        while (!isAuthenticated())
         {
             String loginRegisterInput = takeLoginRegisterInput();
 
@@ -82,6 +82,8 @@ public class AuthorizationService
         System.out.print("Enter username: ");
         String username = keyboard.nextLine();
 
+        System.out.println();
+
         System.out.print("Enter password: ");
         String password = keyboard.nextLine();
 
@@ -125,8 +127,12 @@ public class AuthorizationService
 
         return (
                 loginRegisterInput.toLowerCase().equals(this.loginInputValueLower) ||
-                        loginRegisterInput.toLowerCase().equals(this.registerInputValueLower)
+                loginRegisterInput.toLowerCase().equals(this.registerInputValueLower)
         );
+    }
+
+    private boolean isAuthenticated() {
+        return this.player != null;
     }
 
 }
