@@ -16,7 +16,7 @@ public class AIPlayer {
     public AIPlayer(GridStatefulManager gridStatefulManager, AIDifficulty difficulty) {
         this.gridStatefulManager = gridStatefulManager;
         this.difficulty = difficulty;
-        this.aiMiniMax = new AIMiniMax(gridStatefulManager);
+        this.aiMiniMax = new AIMiniMax(gridStatefulManager.getGrid());
     }
 
     public void makeMove() {

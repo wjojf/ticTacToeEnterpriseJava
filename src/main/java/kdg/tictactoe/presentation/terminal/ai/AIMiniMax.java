@@ -1,34 +1,37 @@
 package kdg.tictactoe.presentation.terminal.ai;
 
-import kdg.tictactoe.domain.manager.GridStatefulManager;
+import kdg.tictactoe.domain.manager.GridStaticManager;
 import kdg.tictactoe.domain.models.GridSlot;
 import kdg.tictactoe.domain.models.PlayerMove;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
+import java.util.Map;
 
 public class AIMiniMax {
 
-    private final GridStatefulManager gridStatefulManager;
+    private int[][] gridCopy;
     private final int aiPlayerGridValue;
+    private final int realplayerGridValue;
 
-    public AIMiniMax(@NotNull GridStatefulManager gridStatefulManager) {
-        this.gridStatefulManager = gridStatefulManager;
-        this.aiPlayerGridValue = gridStatefulManager.getOValue();
+    public AIMiniMax(int[][] grid) {
+        this.gridCopy = grid;
+        this.aiPlayerGridValue = GridStaticManager.oValue;
+        this.realplayerGridValue = GridStaticManager.xValue;
     }
 
-
     public PlayerMove getBestMove() {
+
         int bestScore = -2;
         PlayerMove bestMove = null;
-        List<GridSlot> freeSlots = this.gridStatefulManager.getAllEmptySlots();
 
-        int[][] gridCopy = getCurrentGridCopy();
+        List<GridSlot> freeSlots = GridStaticManager.getAllEmptySlots(gridCopy);
 
         for (GridSlot freeSlot: freeSlots) {
+
+            //Simulate AI move
             gridCopy[freeSlot.row][freeSlot.col] = aiPlayerGridValue;
 
-            int score = miniMax(gridCopy, 0, true);
+            // Get minimax best score with maximizing = false as its Player move now
+            int score = miniMax(gridCopy, 0, false);
 
             if (score > bestScore) {
                 bestScore = score;
@@ -36,28 +39,64 @@ public class AIMiniMax {
 
             }
 
-            gridCopy[freeSlot.row][freeSlot.col] = gridStatefulManager.getEmptyValue();
+            gridCopy[freeSlot.row][freeSlot.col] = GridStaticManager.emptyValue;
         }
 
         return bestMove;
     }
 
-    private int miniMax(int[][] board, int depth, boolean isMaximizing) {
+    private int miniMax(int[][] grid, int depth, boolean isMaximizing) {
+        if (GridStaticManager.isGameOver(grid)) {
+            return getGameOverScore(grid);
+        }
 
-        int drawScore = 0;
-        int aiWinScore = 1;
-        int aiLoseScore = -1;
+        List<GridSlot> freeSlots = GridStaticManager.getAllEmptySlots(grid);
 
         if (isMaximizing) {
+            int bestScore = -1;
+
+            for (GridSlot freeSlot : freeSlots) {
+                grid[freeSlot.row][freeSlot.col] = aiPlayerGridValue;
+                int score = miniMax(grid, depth + 1, false);
+                grid[freeSlot.row][freeSlot.col] = GridStaticManager.emptyValue;
+                bestScore = Math.max(bestScore, score);
+            }
+
+            return bestScore;
+        }
+
+        int worstScore = 1;
+
+        for (GridSlot freeSlot: freeSlots) {
+            grid[freeSlot.row][freeSlot.col] = realplayerGridValue;
+
+            // Get worst for AI Score with Maximizing = true as next move is AI
+            int score = miniMax(grid, depth + 1, true);
+
+            grid[freeSlot.row][freeSlot.col] = GridStaticManager.emptyValue;
+
+            worstScore = Math.min(worstScore, score);
 
         }
 
-        return aiWinScore;
+        return worstScore;
     }
 
-    private int[][] getCurrentGridCopy() {
-        return this.gridStatefulManager.getGrid().clone();
+    private int getGameOverScore(int[][] grid) {
+        // Draw - 0
+        if (GridStaticManager.isDraw(grid)) {
+            return 0;
+        }
+
+        // Win - +1
+        if (
+            (GridStaticManager.isXWin(grid) && aiPlayerGridValue == GridStaticManager.xValue) ||
+            (GridStaticManager.isOWin(grid) && aiPlayerGridValue == GridStaticManager.oValue)
+        ) {
+            return 1;
+        }
+
+        // Loss - -1
+        return -1;
     }
-
-
 }
