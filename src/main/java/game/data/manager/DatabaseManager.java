@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 
-
 public class DatabaseManager {
 
     private static final Dotenv dotEnv = Dotenv.load();
