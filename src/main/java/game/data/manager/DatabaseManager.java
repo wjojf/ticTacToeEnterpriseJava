@@ -1,14 +1,20 @@
 package game.data.manager;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
+
 public class DatabaseManager {
-    private static final String dsn = "jdbc:postgresql://0.0.0.0:5432/test";
-    private static final String username = "postgres";
-    private static final String  password = "postgres";
+
+    private static final Dotenv dotEnv = Dotenv.load();
+    private static final String dsn = dotEnv.get("JDBC_POSTGRES_URL");
+    private static final String username = dotEnv.get("JDBC_POSTGRES_DB_USERNAME");
+    private static final String  password = dotEnv.get("JDBC_POSTGRES_DB_PASSWORD");
 
     public DatabaseManager() throws SQLException {
         System.out.println("Initializing Database Connection...");

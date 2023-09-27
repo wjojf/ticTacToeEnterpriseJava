@@ -82,7 +82,7 @@ public class AuthorizationService
         System.out.print("Enter username: ");
         String username = keyboard.nextLine();
 
-        System.out.println("Enter password: ");
+        System.out.print("Enter password: ");
         String password = keyboard.nextLine();
 
         return new PlayerLoginInput(username, password);
