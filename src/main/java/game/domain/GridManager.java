@@ -1,5 +1,9 @@
 package game.domain;
+
+import game.domain.models.GridSlot;
 import javax.management.openmbean.InvalidKeyException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GridManager {
 
@@ -68,6 +72,19 @@ public class GridManager {
         );
     }
 
+    public List<GridSlot> getAllEmptySlots() {
+        List<GridSlot> emptySlots = new ArrayList<>();
+
+        for (int row = 0; row < this.getGridSize(); row++) {
+            for (int col = 0; row < this.getGridSize(); col++) {
+                if (isSlotFree(row, col)) {
+                    emptySlots.add(new GridSlot(row, col));
+                }
+            }
+        }
+
+        return emptySlots;
+    }
 
     public boolean isXWin() {
         return this.isWin(this.xValue);
@@ -85,7 +102,7 @@ public class GridManager {
         );
     }
 
-    public void makeMove(int row, int col) {
+    public void makeMove(int row, int col) throws InvalidKeyException {
         if (!isSlotFree(row, col) || !isSlotValid(row, col)){
             throw new InvalidKeyException("slot is already taken");
         }
