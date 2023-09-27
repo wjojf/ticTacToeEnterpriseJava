@@ -31,7 +31,7 @@ public class AIPlayer {
         Random rand = new Random();
         GridSlot randomGridSlot = null;
 
-        while (randomGridSlot == null || !this.gridManager.isSlotFree(randomGridSlot.row, randomGridSlot.col)) {
+        while (!isRandomSlotValid(randomGridSlot)) {
             randomGridSlot = freeSlots.get(rand.nextInt(freeSlots.size()));
         }
 
@@ -40,6 +40,10 @@ public class AIPlayer {
 
     private void makeBestMove(List<GridSlot> freeSlots) {
         int[][] gridCopy = getCurrentGridCopy();
+    }
+
+    private boolean isRandomSlotValid(GridSlot gridSlot) {
+        return gridSlot != null && this.gridManager.isSlotFree(gridSlot.row, gridSlot.col);
     }
 
 }
