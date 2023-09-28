@@ -1,8 +1,6 @@
 package kdg.tictactoe.domain.manager;
 
-import kdg.tictactoe.domain.models.GridSlot;
 import javax.management.openmbean.InvalidKeyException;
-import java.util.List;
 
 public class GridStatefulManager {
     private final int[][] grid;
@@ -32,10 +30,6 @@ public class GridStatefulManager {
         return turn == xValue;
     }
 
-    public int getEmptyValue() {
-        return GridStaticManager.emptyValue;
-    }
-
     public int getXValue() {
         return xValue;
     }
@@ -60,10 +54,6 @@ public class GridStatefulManager {
 
     public boolean isGameOver() {
         return GridStaticManager.isGameOver(grid);
-    }
-
-    public List<GridSlot> getAllEmptySlots() {
-        return GridStaticManager.getAllEmptySlots(grid);
     }
 
     public boolean isXWin() {
