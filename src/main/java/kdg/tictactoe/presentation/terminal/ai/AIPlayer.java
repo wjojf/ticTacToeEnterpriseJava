@@ -2,6 +2,7 @@ package kdg.tictactoe.presentation.terminal.ai;
 
 import kdg.tictactoe.domain.models.GridSlot;
 import kdg.tictactoe.domain.manager.GridStatefulManager;
+import kdg.tictactoe.domain.models.PlayerMove;
 
 import java.util.List;
 import java.util.Random;
@@ -13,27 +14,33 @@ public class AIPlayer {
 
     private final AIMiniMax aiMiniMax;
 
-    public AIPlayer(GridStatefulManager gridStatefulManager, AIDifficulty difficulty) {
+    public AIPlayer(
+            GridStatefulManager gridStatefulManager,
+            AIDifficulty difficulty,
+            int aiPlayerGridValue,
+            int realPlayerGridValue
+        ) {
         this.gridStatefulManager = gridStatefulManager;
         this.difficulty = difficulty;
-        this.aiMiniMax = new AIMiniMax(gridStatefulManager.getGrid());
+        this.aiMiniMax = new AIMiniMax(gridStatefulManager.getGrid(), realPlayerGridValue, aiPlayerGridValue);
     }
 
-    public void makeMove() {
+    public PlayerMove getAIMove() {
         List<GridSlot> freeSlots = this.gridStatefulManager.getAllEmptySlots();
 
         switch (difficulty) {
             case EASY -> {
-                makeRandomMove(freeSlots);
+                return getRandomMove(freeSlots);
             }
             case HARD -> {
-                makeBestMove(freeSlots);
+                return getBestMove(freeSlots);
             }
         }
 
+        return getBestMove(freeSlots);
     }
 
-    private void makeRandomMove(List<GridSlot> freeSlots) {
+    private PlayerMove getRandomMove(List<GridSlot> freeSlots) {
         Random rand = new Random();
         GridSlot randomGridSlot = null;
 
@@ -41,12 +48,11 @@ public class AIPlayer {
             randomGridSlot = freeSlots.get(rand.nextInt(freeSlots.size()));
         }
 
-        this.gridStatefulManager.makeMove(randomGridSlot.row, randomGridSlot.col);
+        return new PlayerMove(randomGridSlot.row, randomGridSlot.col);
     }
 
-    private void makeBestMove(List<GridSlot> freeSlots) {
-        //FIXME: implement AI algorithm
-        makeRandomMove(freeSlots);
+    private PlayerMove getBestMove(List<GridSlot> freeSlots) {
+        return aiMiniMax.getBestMove();
     }
 
     private boolean isRandomSlotValid(GridSlot gridSlot) {

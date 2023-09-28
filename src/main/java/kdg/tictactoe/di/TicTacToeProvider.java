@@ -7,7 +7,7 @@ import kdg.tictactoe.domain.manager.GridStatefulManager;
 public class TicTacToeProvider {
 
     public static ITicTacToe provideTicTacToe(GridStatefulManager gridStatefulManager) {
-        return TicTacToeFactory.newAuthorizedTicTacToe(gridStatefulManager);
+        return TicTacToeFactory.newAuthorizedAITicTacToe(gridStatefulManager);
     }
 
 }

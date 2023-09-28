@@ -4,18 +4,17 @@ import kdg.tictactoe.domain.manager.GridStaticManager;
 import kdg.tictactoe.domain.models.GridSlot;
 import kdg.tictactoe.domain.models.PlayerMove;
 import java.util.List;
-import java.util.Map;
 
 public class AIMiniMax {
 
-    private int[][] gridCopy;
+    private final int[][] gridCopy;
     private final int aiPlayerGridValue;
-    private final int realplayerGridValue;
+    private final int realPlayerGridValue;
 
-    public AIMiniMax(int[][] grid) {
+    public AIMiniMax(int[][] grid, int realPlayerGridValue, int aiPlayerGridValue) {
         this.gridCopy = grid;
-        this.aiPlayerGridValue = GridStaticManager.oValue;
-        this.realplayerGridValue = GridStaticManager.xValue;
+        this.aiPlayerGridValue = realPlayerGridValue;
+        this.realPlayerGridValue = aiPlayerGridValue;
     }
 
     public PlayerMove getBestMove() {
@@ -52,6 +51,7 @@ public class AIMiniMax {
 
         List<GridSlot> freeSlots = GridStaticManager.getAllEmptySlots(grid);
 
+        // Search for best possible output - maximizing
         if (isMaximizing) {
             int bestScore = -1;
 
@@ -65,10 +65,12 @@ public class AIMiniMax {
             return bestScore;
         }
 
+        // Search for worst possible output - minimizing
+
         int worstScore = 1;
 
         for (GridSlot freeSlot: freeSlots) {
-            grid[freeSlot.row][freeSlot.col] = realplayerGridValue;
+            grid[freeSlot.row][freeSlot.col] = realPlayerGridValue;
 
             // Get worst for AI Score with Maximizing = true as next move is AI
             int score = miniMax(grid, depth + 1, true);

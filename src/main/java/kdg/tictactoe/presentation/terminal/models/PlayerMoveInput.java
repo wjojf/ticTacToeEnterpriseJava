@@ -1,7 +1,9 @@
 package kdg.tictactoe.presentation.terminal.models;
 
+import kdg.tictactoe.domain.models.PlayerMove;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class PlayerMoveInput {
@@ -21,6 +23,13 @@ public class PlayerMoveInput {
         }
 
         return new PlayerMoveInput(playerInputSplit[0], playerInputSplit[1]);
+    }
+
+    public static @NotNull PlayerMoveInput FromPlayerMoveDomain(PlayerMove playerMove, char[] rowIndexes) {
+        return new PlayerMoveInput(
+                String.valueOf(rowIndexes[playerMove.row]),
+                Integer.valueOf(playerMove.col + 1).toString()
+        );
     }
 
 }

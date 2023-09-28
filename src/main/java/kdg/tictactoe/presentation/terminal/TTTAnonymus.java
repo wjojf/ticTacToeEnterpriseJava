@@ -14,7 +14,7 @@ public class TTTAnonymus implements ITicTacToe {
     private final char oSymbol = 'O';
     private final char emptySymbol = ' ';
     private final char[][] displayGrid;
-    private final char[] rowIndexes = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+    protected final char[] rowIndexes = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
 
     public TTTAnonymus(GridStatefulManager gridStatefulManager) {
         this.gridStatefulManager = gridStatefulManager;
@@ -62,7 +62,7 @@ public class TTTAnonymus implements ITicTacToe {
 
         Scanner keyboard = new Scanner(System.in);
 
-        PlayerMoveInput playerMove = new PlayerMoveInput("", "");;
+        PlayerMoveInput playerMove;
 
         while (true) {
             System.out.print(playerInputMessage);
