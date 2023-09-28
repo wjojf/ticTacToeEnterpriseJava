@@ -1,4 +1,4 @@
-package kdg.tictactoe.presentation.terminal.ai;
+package kdg.tictactoe.presentation.ascii.ai;
 
 import kdg.tictactoe.domain.ai.AIDifficulty;
 import kdg.tictactoe.domain.ai.AIMiniMax;

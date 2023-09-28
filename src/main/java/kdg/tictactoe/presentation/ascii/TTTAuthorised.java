@@ -1,9 +1,9 @@
-package kdg.tictactoe.presentation.terminal;
+package kdg.tictactoe.presentation.ascii;
 
-import kdg.tictactoe.presentation.terminal.service.PlayerStatsService;
+import kdg.tictactoe.presentation.ascii.service.PlayerStatsService;
 import kdg.tictactoe.domain.manager.GridStatefulManager;
 import kdg.tictactoe.domain.models.Player;
-import kdg.tictactoe.presentation.terminal.service.AuthorizationService;
+import kdg.tictactoe.presentation.ascii.service.AuthorizationService;
 
 
 public class TTTAuthorised extends TTTAnonymus {

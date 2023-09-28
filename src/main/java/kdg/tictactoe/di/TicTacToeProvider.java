@@ -1,7 +1,7 @@
 package kdg.tictactoe.di;
 
 import kdg.tictactoe.presentation.ITicTacToe;
-import kdg.tictactoe.presentation.TicTacToeFactory;
+import kdg.tictactoe.presentation.ascii.TicTacToeFactory;
 import kdg.tictactoe.domain.manager.GridStatefulManager;
 
 public class TicTacToeProvider {

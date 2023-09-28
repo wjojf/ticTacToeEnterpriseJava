@@ -1,9 +1,9 @@
-package kdg.tictactoe.presentation.terminal;
+package kdg.tictactoe.presentation.ascii;
 
 import kdg.tictactoe.presentation.ITicTacToe;
 import kdg.tictactoe.domain.manager.GridStatefulManager;
 import kdg.tictactoe.domain.models.PlayerMove;
-import kdg.tictactoe.presentation.terminal.models.PlayerMoveInput;
+import kdg.tictactoe.presentation.ascii.models.PlayerMoveInput;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;

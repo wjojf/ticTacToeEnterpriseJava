@@ -1,11 +1,11 @@
-package kdg.tictactoe.presentation.terminal;
+package kdg.tictactoe.presentation.ascii;
 
 import kdg.tictactoe.domain.manager.GridStatefulManager;
 import kdg.tictactoe.domain.manager.GridStaticManager;
 import kdg.tictactoe.domain.models.PlayerMove;
 import kdg.tictactoe.domain.ai.AIDifficulty;
-import kdg.tictactoe.presentation.terminal.ai.AIPlayer;
-import kdg.tictactoe.presentation.terminal.models.PlayerMoveInput;
+import kdg.tictactoe.presentation.ascii.ai.AIPlayer;
+import kdg.tictactoe.presentation.ascii.models.PlayerMoveInput;
 
 
 public class TTTAuthorizedAI extends TTTAuthorised {

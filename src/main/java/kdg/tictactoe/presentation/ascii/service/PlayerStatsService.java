@@ -1,4 +1,4 @@
-package kdg.tictactoe.presentation.terminal.service;
+package kdg.tictactoe.presentation.ascii.service;
 
 import kdg.tictactoe.di.RepositoryProvider;
 import kdg.tictactoe.domain.models.Player;

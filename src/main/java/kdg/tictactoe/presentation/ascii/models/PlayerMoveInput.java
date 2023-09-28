@@ -1,9 +1,8 @@
-package kdg.tictactoe.presentation.terminal.models;
+package kdg.tictactoe.presentation.ascii.models;
 
 import kdg.tictactoe.domain.models.PlayerMove;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class PlayerMoveInput {

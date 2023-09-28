@@ -1,9 +1,6 @@
-package kdg.tictactoe.presentation;
+package kdg.tictactoe.presentation.ascii;
 
 import kdg.tictactoe.domain.manager.GridStatefulManager;
-import kdg.tictactoe.presentation.terminal.TTTAnonymus;
-import kdg.tictactoe.presentation.terminal.TTTAuthorised;
-import kdg.tictactoe.presentation.terminal.TTTAuthorizedAI;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
