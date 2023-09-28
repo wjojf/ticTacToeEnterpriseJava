@@ -1,4 +1,4 @@
-package kdg.tictactoe.presentation.terminal.ai;
+package kdg.tictactoe.domain.ai;
 
 import kdg.tictactoe.domain.manager.GridStaticManager;
 import kdg.tictactoe.domain.models.GridSlot;
@@ -13,8 +13,8 @@ public class AIMiniMax {
 
     public AIMiniMax(int[][] grid, int realPlayerGridValue, int aiPlayerGridValue) {
         this.gridCopy = grid;
-        this.aiPlayerGridValue = realPlayerGridValue;
-        this.realPlayerGridValue = aiPlayerGridValue;
+        this.aiPlayerGridValue = aiPlayerGridValue;
+        this.realPlayerGridValue = realPlayerGridValue;
     }
 
     public PlayerMove getBestMove() {
@@ -45,6 +45,7 @@ public class AIMiniMax {
     }
 
     private int miniMax(int[][] grid, int depth, boolean isMaximizing) {
+
         if (GridStaticManager.isGameOver(grid)) {
             return getGameOverScore(grid);
         }

@@ -50,7 +50,7 @@ public class GridStaticManager {
         List<GridSlot> emptySlots = new ArrayList<>();
 
         for (int row = 0; row < getGridSize(grid); row++) {
-            for (int col = 0; row < getGridSize(grid); col++) {
+            for (int col = 0; col < getGridSize(grid); col++) {
                 if (isSlotFree(row, col, grid)) {
                     emptySlots.add(new GridSlot(row, col));
                 }
@@ -65,6 +65,11 @@ public class GridStaticManager {
     }
 
     public static boolean isSlotFree(int row, int col, int[][] grid) {
+
+        if (!isSlotValid(row, col, grid)) {
+            return false;
+        }
+
         return grid[row][col] == emptyValue;
     }
 

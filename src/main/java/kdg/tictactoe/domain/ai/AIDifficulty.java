@@ -1,4 +1,4 @@
-package kdg.tictactoe.presentation.terminal.ai;
+package kdg.tictactoe.domain.ai;
 
 public enum AIDifficulty {
     EASY,

@@ -1,5 +1,8 @@
 package kdg.tictactoe.presentation.terminal.ai;
 
+import kdg.tictactoe.domain.ai.AIDifficulty;
+import kdg.tictactoe.domain.ai.AIMiniMax;
+import kdg.tictactoe.domain.manager.GridStaticManager;
 import kdg.tictactoe.domain.models.GridSlot;
 import kdg.tictactoe.domain.manager.GridStatefulManager;
 import kdg.tictactoe.domain.models.PlayerMove;
@@ -26,18 +29,19 @@ public class AIPlayer {
     }
 
     public PlayerMove getAIMove() {
-        List<GridSlot> freeSlots = this.gridStatefulManager.getAllEmptySlots();
+        List<GridSlot> freeSlots = GridStaticManager.getAllEmptySlots(gridStatefulManager.getGrid());
 
         switch (difficulty) {
             case EASY -> {
                 return getRandomMove(freeSlots);
             }
             case HARD -> {
-                return getBestMove(freeSlots);
+                System.out.println("\nAI Finding Optimal Move...\n");
+                return getBestMove();
             }
         }
 
-        return getBestMove(freeSlots);
+        return getBestMove();
     }
 
     private PlayerMove getRandomMove(List<GridSlot> freeSlots) {
@@ -51,7 +55,7 @@ public class AIPlayer {
         return new PlayerMove(randomGridSlot.row, randomGridSlot.col);
     }
 
-    private PlayerMove getBestMove(List<GridSlot> freeSlots) {
+    private PlayerMove getBestMove() {
         return aiMiniMax.getBestMove();
     }
 
