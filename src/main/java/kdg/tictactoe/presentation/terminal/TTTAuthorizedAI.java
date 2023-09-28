@@ -33,7 +33,7 @@ public class TTTAuthorizedAI extends TTTAuthorised {
         PlayerMove aiMoveDomain = aiPlayer.getAIMove();
         PlayerMoveInput aiMoveInput =  PlayerMoveInput.FromPlayerMoveDomain(aiMoveDomain, rowIndexes);
 
-        System.out.printf("AI Move: %s.%s%n", aiMoveInput.row, aiMoveInput.col);
+        System.out.printf("\nAI Move: %s.%s \n", aiMoveInput.row, aiMoveInput.col);
 
         return aiMoveInput;
     }
