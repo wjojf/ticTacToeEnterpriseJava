@@ -231,8 +231,19 @@ public class TTTAnonymus implements ITicTacToe {
     protected String takeRestartPlayerInput() {
         Scanner keyboard = new Scanner(System.in);
         System.out.print("\n\nDo you want to Start Over / Quit?\n");
-        System.out.print("\nq/Q for exit r/R for restart: ");
-        return keyboard.nextLine().toLowerCase();
+
+        String playerInput = "";
+
+        while (!isPlayerRestartInputValid(playerInput)) {
+            System.out.print("\nq/Q for exit r/R for restart: ");
+            playerInput = keyboard.nextLine().toLowerCase();
+        }
+
+        return playerInput.toLowerCase();
+    }
+
+    private boolean isPlayerRestartInputValid(String input) {
+        return input.toLowerCase() == "q" || input.toLowerCase() == "r";
     }
 
     protected void handleRestartPlayerInput(String playerRestartInput) {
