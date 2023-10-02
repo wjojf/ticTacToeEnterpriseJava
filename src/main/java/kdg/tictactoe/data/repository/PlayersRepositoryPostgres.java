@@ -6,8 +6,6 @@ import kdg.tictactoe.domain.models.Player;
 import kdg.tictactoe.domain.models.PlayerLoginInput;
 
 import java.security.InvalidKeyException;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.sql.*;
 
 public class PlayersRepositoryPostgres implements IPlayersRepository {
