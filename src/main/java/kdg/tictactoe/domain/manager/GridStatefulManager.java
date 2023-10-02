@@ -1,14 +1,21 @@
 package kdg.tictactoe.domain.manager;
 
+import kdg.tictactoe.domain.GridFactory;
+
 import javax.management.openmbean.InvalidKeyException;
 
 public class GridStatefulManager {
-    private final int[][] grid;
+    private int[][] grid;
     private int turn = GridStaticManager.xValue;
     private final int xValue = GridStaticManager.xValue;
     private final int oValue = GridStaticManager.oValue;
     public GridStatefulManager(int[][] grid) {
         this.grid = grid;
+    }
+
+    public void reset() {
+        turn = GridStaticManager.xValue;
+        grid = GridFactory.newEmptyGrid();
     }
 
     public void makeMove(int row, int col) throws InvalidKeyException {

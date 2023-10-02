@@ -137,7 +137,7 @@ public class PlayerStatsService
     }
 
     private static String getIntroMessage(Player player) {
-        return "Current Statistics for Player %s%n: ".formatted(player.username);
+        return "\n Current Statistics for Player %s%n: ".formatted(player.username);
     }
 
     private static void printStatisticsTable(PlayerStats playerStats) {

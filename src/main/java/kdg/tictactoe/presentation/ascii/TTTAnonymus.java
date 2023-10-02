@@ -33,6 +33,8 @@ public class TTTAnonymus implements ITicTacToe {
 
         this.handleGameOver();
 
+        String restartInput = takeRestartPlayerInput();
+        handleRestartPlayerInput(restartInput);
     }
 
     public void printGrid() {
@@ -223,6 +225,25 @@ public class TTTAnonymus implements ITicTacToe {
         if (isOWin) {
             System.out.println("O player won! Congratulations");
         }
+
+    }
+
+    protected String takeRestartPlayerInput() {
+        Scanner keyboard = new Scanner(System.in);
+        System.out.print("\n\nDo you want to Start Over / Quit?\n");
+        System.out.print("\nq/Q for exit r/R for restart: ");
+        return keyboard.nextLine().toLowerCase();
+    }
+
+    protected void handleRestartPlayerInput(String playerRestartInput) {
+        if (playerRestartInput == "q") {
+            System.out.println("Thanks for playing! See you soon");
+            return;
+        }
+
+        gridStatefulManager.reset();
+        playGame();
+
     }
 
 }

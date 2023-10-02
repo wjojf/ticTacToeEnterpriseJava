@@ -64,12 +64,12 @@ public class AuthorizationService
     private String takeLoginRegisterInput() {
         Scanner keyboard = new Scanner(System.in);
 
-        System.out.println("Please Log In or Sign Up");
+        System.out.println("\nPlease Log In or Sign Up");
 
         String loginRegister = null;
 
         while (!isLoginRegisterInputValid(loginRegister)){
-            System.out.print(this.getLoginInputMessage());
+            System.out.print("\n" + this.getLoginInputMessage());
             loginRegister = keyboard.nextLine().toLowerCase();
         }
 
@@ -82,10 +82,12 @@ public class AuthorizationService
         System.out.print("Enter username: ");
         String username = keyboard.nextLine();
 
-        System.out.println();
+        System.out.println("-".repeat(10));
 
         System.out.print("Enter password: ");
         String password = keyboard.nextLine();
+
+        System.out.println("-".repeat(10));
 
         return new PlayerLoginInput(username, password);
     }
@@ -96,7 +98,7 @@ public class AuthorizationService
                 loginPlayer(loginRegisterCredentials);
             }
             catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.out.println("\n" + e.getMessage() + "\n");
             }
             return;
         }

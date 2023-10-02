@@ -12,10 +12,6 @@ import java.sql.*;
 
 public class PlayersRepositoryPostgres implements IPlayersRepository {
 
-    private static final String dsn = "jdbc:postgresql://0.0.0.0:5432/test";
-    public static final String username = "postgres";
-    public static final String  password = "postgres";
-
     private final DatabaseManager databaseManager;
 
     public PlayersRepositoryPostgres() throws SQLException {

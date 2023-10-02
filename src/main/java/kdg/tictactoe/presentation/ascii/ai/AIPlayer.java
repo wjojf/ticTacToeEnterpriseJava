@@ -33,6 +33,7 @@ public class AIPlayer {
 
         switch (difficulty) {
             case EASY -> {
+                System.out.println("\nAI Making random Move");
                 return getRandomMove(freeSlots);
             }
             case HARD -> {
